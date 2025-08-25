@@ -1,0 +1,32 @@
+
+#!/bin/bash
+#PBS -m ae
+#PBS -P n81
+#PBS -q normal
+#PBS -l walltime=2:00:00
+#PBS -l mem=32GB
+#PBS -l ncpus=1
+#PBS -j oe
+#PBS -l wd
+#PBS -l storage=scratch/w28+gdata/w28+gdata/n81
+echo "Starting time:"
+date
+
+set -euo pipefail
+ulimit -s unlimited
+ulimit -c 0
+
+module purge
+module load ncl/6.6.2     
+
+# Set environment variables
+export BARRA2_ROOT="/g/data/w28/chs548/BARRA2_For_WRF"
+export OUTDIR="/g/data/w28/yk8692/nesp/wrf/wps/int"
+export FGNAME="BARRA2"
+export INTERVAL_MINUTES=360
+export DEBUG=0
+
+echo "which ncl: $(which ncl)"
+ncl -V
+
+env YEAR=2016 MONTH=01 ncl convert_barra2_to_wrfint_v4.15.ncl 2>&1 | tee ncl_v4.15.log

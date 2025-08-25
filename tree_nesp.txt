@@ -1,0 +1,741 @@
+.
+├── 10_to_1hr_duration_event.ipynb
+├── auckland
+│   ├── statsnz-territorial-authority-2025-clipped-SH_auckland_buffer-km-100_wgs84_env.cpg
+│   ├── statsnz-territorial-authority-2025-clipped-SH_auckland_buffer-km-100_wgs84_env.dbf
+│   ├── statsnz-territorial-authority-2025-clipped-SH_auckland_buffer-km-100_wgs84_env.prj
+│   ├── statsnz-territorial-authority-2025-clipped-SH_auckland_buffer-km-100_wgs84_env.sbn
+│   ├── statsnz-territorial-authority-2025-clipped-SH_auckland_buffer-km-100_wgs84_env.sbx
+│   ├── statsnz-territorial-authority-2025-clipped-SH_auckland_buffer-km-100_wgs84_env.shp
+│   ├── statsnz-territorial-authority-2025-clipped-SH_auckland_buffer-km-100_wgs84_env.shp.xml
+│   ├── statsnz-territorial-authority-2025-clipped-SH_auckland_buffer-km-100_wgs84_env.shx
+│   ├── statsnz-territorial-authority-2025-clipped-SH_auckland.cpg
+│   ├── statsnz-territorial-authority-2025-clipped-SH_auckland.dbf
+│   ├── statsnz-territorial-authority-2025-clipped-SH_auckland.prj
+│   ├── statsnz-territorial-authority-2025-clipped-SH_auckland.sbn
+│   ├── statsnz-territorial-authority-2025-clipped-SH_auckland.sbx
+│   ├── statsnz-territorial-authority-2025-clipped-SH_auckland.shp
+│   ├── statsnz-territorial-authority-2025-clipped-SH_auckland.shp.xml
+│   └── statsnz-territorial-authority-2025-clipped-SH_auckland.shx
+├── auto_generate_minimum_domain_maps.py
+├── aws_map.ipynb
+├── aws_map_shared.ipynb
+├── b1_final_event_ident_barra2_radar.ipynb
+├── b2_perth_radar_maps (1).ipynb
+├── barra_extreme_test.ipynb
+├── figure
+│   ├── Adelaide_aws_map.jpg
+│   ├── Adelaide_barra_top10_subplot_separate_day_reorder.jpg
+│   ├── Adelaide_top10_extreme_events_ranked_with_latlon.csv
+│   ├── Adelaide_top10_extreme_events_ranked_with_latlon_formatted.csv
+│   ├── Adelaide_top4_all_variables.png
+│   ├── annual_P_Brisbane_with_station_numbers.jpg
+│   ├── annual_P_melbourne_with_station_numbers.jpg
+│   ├── annual_P_Perth_with_station_numbers.jpg
+│   ├── Australian Capital Territory_aws_topo_domain_map.png
+│   ├── Australian Capital Territory_aws_topo_station_map.png
+│   ├── Australian Capital Territory_barra_top10_subplot_separate_day_reorder.jpg
+│   ├── Australian Capital Territory_top10_extreme_events_ranked_with_latlon.csv
+│   ├── Australian Capital Territory_top10_extreme_events_ranked_with_latlon_formatted.csv
+│   ├── Australian Capital Territory_top4_all_variables.png
+│   ├── barra_precip_melbourne.gif
+│   ├── barra_top10_subplot.jpg
+│   ├── barra_top10_subplot_separate_day.jpg
+│   ├── Brisbane_aws_map.jpg
+│   ├── Brisbane_barra_top10_subplot_separate_day_reorder.jpg
+│   ├── Brisbane_top10_extreme_events_ranked_with_latlon.csv
+│   ├── Brisbane_top10_extreme_events_ranked_with_latlon_formatted.csv
+│   ├── Brisbane_top4_all_variables.png
+│   ├── dailymax_barra_map_melbourne_2003-12-01.jpg
+│   ├── dailymax_barra_map_melbourne_2003-12-02.jpg
+│   ├── dailymax_barra_map_melbourne_2003-12-03.jpg
+│   ├── dailymax_barra_map_melbourne_2003-12-03_with_maxstation.jpg
+│   ├── dailymax_barra_map_melbourne_2003-12-04.jpg
+│   ├── dailymax_barra_map_melbourne_all_top10_dates.jpg
+│   ├── Darwin_barra_top10_subplot_separate_day_reorder.jpg
+│   ├── Darwin_top10_extreme_events_ranked_with_latlon.csv
+│   ├── Darwin_top10_extreme_events_ranked_with_latlon_formatted.csv
+│   ├── Darwin_top4_all_variables.png
+│   ├── Extreme_Events_by_Duration.xlsx
+│   ├── Greater Adelaide_aws_topo_domain_map.png
+│   ├── Greater Adelaide_aws_topo_station_map.png
+│   ├── Greater Brisbane_aws_topo_domain_map.png
+│   ├── Greater Brisbane_aws_topo_station_map.png
+│   ├── Greater Darwin_aws_topo_domain_map.png
+│   ├── Greater Darwin_aws_topo_station_map.png
+│   ├── Greater Hobart_aws_topo_domain_map.png
+│   ├── Greater Hobart_aws_topo_station_map.png
+│   ├── Greater Melbourne_aws_topo_domain_map.png
+│   ├── Greater Melbourne_aws_topo_station_map.png
+│   ├── Greater Perth_aws_topo_domain_map.png
+│   ├── Greater Perth_aws_topo_station_map.png
+│   ├── Greater Sydney_aws_topo_domain_map.png
+│   ├── Greater Sydney_aws_topo_station_map.png
+│   ├── highest_10_melbourne_86038.jpg
+│   ├── Hobart_barra_top10_subplot_separate_day_reorder.jpg
+│   ├── Hobart_top10_extreme_events_ranked_with_latlon.csv
+│   ├── Hobart_top10_extreme_events_ranked_with_latlon_formatted.csv
+│   ├── Hobart_top4_all_variables.png
+│   ├── Melbourne_aws_map.jpg
+│   ├── Melbourne_barra_top10_subplot_separate_day_reorder-Copy1.jpg
+│   ├── Melbourne_barra_top10_subplot_separate_day_reorder.jpg
+│   ├── Melbourne_top10_after_hourly_check_summary.csv
+│   ├── Melbourne_top10_all_stations_summary.csv
+│   ├── Melbourne_top10_all_stations_summary_global_percentile.csv
+│   ├── Melbourne_top10_all_summary.csv
+│   ├── Melbourne_top10_extreme_days_summary.csv
+│   ├── Melbourne_top10_extreme_events_distinct_values.csv
+│   ├── Melbourne_top10_extreme_events_ranked.csv
+│   ├── Melbourne_top10_extreme_events_ranked_with_latlon.csv
+│   ├── Melbourne_top10_extreme_events_ranked_with_latlon_formatted.csv
+│   ├── Melbourne_top4_all_variables.png
+│   ├── minimum_domains
+│   │   ├── minimum_domain_adelaide_custom.png
+│   │   ├── minimum_domain_adelaide_topo.png
+│   │   ├── minimum_domain_brisbane_custom.png
+│   │   ├── minimum_domain_brisbane_topo.png
+│   │   ├── minimum_domain_canberra_custom.png
+│   │   ├── minimum_domain_canberra_topo.png
+│   │   ├── minimum_domain_darwin_custom.png
+│   │   ├── minimum_domain_darwin_topo.png
+│   │   ├── minimum_domain_hobart_custom.png
+│   │   ├── minimum_domain_hobart_topo.png
+│   │   ├── minimum_domain_melbourne_custom.png
+│   │   ├── minimum_domain_melbourne_topo.png
+│   │   ├── minimum_domain_perth_custom.png
+│   │   ├── minimum_domain_perth_topo.png
+│   │   ├── minimum_domain_sydney_custom.png
+│   │   ├── minimum_domain_sydney_topo.png
+│   │   ├── raster
+│   │   │   ├── SR_HR.prj
+│   │   │   ├── SR_HR.README.html
+│   │   │   ├── SR_HR.tfw
+│   │   │   ├── SR_HR.tif
+│   │   │   └── SR_HR.VERSION.txt
+│   │   ├── srtm-1sec-dem-v1-COG.tif
+│   │   ├── summary_aws_stations_australia_topo.png
+│   │   ├── summary_minimum_domains_australia_custom.png
+│   │   ├── summary_minimum_domains_australia_topo.png
+│   │   └── test
+│   │       ├── minimum_domain_Adelaide.png
+│   │       ├── minimum_domain_adelaide_simplified.png
+│   │       ├── minimum_domain_Brisbane.png
+│   │       ├── minimum_domain_brisbane_simplified.png
+│   │       ├── minimum_domain_canberra_simplified.png
+│   │       ├── minimum_domain_capital.png
+│   │       ├── minimum_domain_Darwin.png
+│   │       ├── minimum_domain_darwin_simplified.png
+│   │       ├── minimum_domain_Hobart.png
+│   │       ├── minimum_domain_hobart_simplified.png
+│   │       ├── minimum_domain_melbourne.png
+│   │       ├── minimum_domain_Melbourne.png
+│   │       ├── minimum_domain_melbourne_simplified.png
+│   │       ├── minimum_domain_perth.png
+│   │       ├── minimum_domain_perth_simplified.png
+│   │       ├── minimum_domain_Sydney.png
+│   │       ├── minimum_domain_sydney_simplified.png
+│   │       └── summary_minimum_domains_australia.png
+│   ├── Perth_aws_map.jpg
+│   ├── Perth_barra_top10_subplot_separate_day.jpg
+│   ├── Perth_barra_top10_subplot_separate_day_reorder.jpg
+│   ├── Perth_radar_top10_subplot_separate_day_reorder.jpg
+│   ├── Perth_top10_all_stations_summary_global_percentile.csv
+│   ├── Perth_top10_extreme_events_ranked_with_latlon.csv
+│   ├── Perth_top10_extreme_events_ranked_with_latlon_formatted.csv
+│   ├── Perth_top4_all_variables.png
+│   ├── Sydney_aws_map.jpg
+│   ├── Sydney_barra_top10_subplot_separate_day_reorder.jpg
+│   ├── Sydney_top10_extreme_events_ranked_with_latlon.csv
+│   ├── Sydney_top10_extreme_events_ranked_with_latlon_formatted.csv
+│   ├── top_10_groupbar_Adelaide.jpg
+│   ├── top_10_groupbar_Australian Capital Territory.png
+│   ├── top_10_groupbar_Brisbane.jpg
+│   ├── top_10_groupbar_Darwin.png
+│   ├── top_10_groupbar_Hobart.png
+│   ├── top_10_groupbar_Melbourne.jpg
+│   ├── top_10_groupbar_Perth.jpg
+│   ├── top_10_groupbar_Sydney.jpg
+│   ├── top_10_groupbar_Sydney.png
+│   ├── top_10_heatmap_Melbourne_all_stations_common.jpg
+│   ├── top_10_heatmap_Melbourne_all_stations_common_with_dates.jpg
+│   ├── top_10_heatmap_Melbourne_all_stations_common_with_dates_with_top_of_top10.jpg
+│   ├── top_10_heatmap_Melbourne_all_stations_common_with_rank.jpg
+│   ├── top_10_heatmap_Melbourne_all_stations.jpg
+│   ├── top_10_map_Melbourne.jpg
+│   ├── top_10_map_Melbourne_with_dates_mmmin.jpg
+│   ├── top_4_map_melbourne_with_dates.jpg
+│   ├── top_4_map_melbourne_with_dates_mmmin.jpg
+│   ├── top_9_map_Melbourne.jpg
+│   ├── topoftop_10_map_melbourne.jpg
+│   ├── trend_map_Brisbane_99_999_with_sig_test_excluding_zero.jpg
+│   ├── trend_map_melbourne_99_995_999_with_sig_test.jpg
+│   ├── trend_map_melbourne_99_999_with_sig_test_excluding_zero.jpg
+│   ├── trend_map_melbourne_99_999_with_sig_test.jpg
+│   └── trend_map_Perth_99_999_with_sig_test_excluding_zero.jpg
+├── generate_all_minimum_domains.py
+├── minimum_domain_proposal.ipynb
+├── p6_wind_during_event_cases.ipynb
+├── station
+│   ├── All_stations_information.xlsx
+│   ├── HD01D_Data_009021_9999999910704119.nc
+│   ├── HD01D_Data_009037_9999999910704119.nc
+│   ├── HD01D_Data_009053_9999999910704119.nc
+│   ├── HD01D_Data_009172_9999999910704302.nc
+│   ├── HD01D_Data_009178_9999999910704302.nc
+│   ├── HD01D_Data_009193_9999999910704302.nc
+│   ├── HD01D_Data_009215_9999999910704302.nc
+│   ├── HD01D_Data_009225_9999999910704302.nc
+│   ├── HD01D_Data_009240_9999999910704302.nc
+│   ├── HD01D_Data_009256_9999999910704302.nc
+│   ├── HD01D_Data_009280_9999999910704302.nc
+│   ├── HD01D_Data_009281_9999999910704302.nc
+│   ├── HD01D_Data_009518_9999999910704302.nc
+│   ├── HD01D_Data_009519_9999999910704302.nc
+│   ├── HD01D_Data_009538_9999999910704302.nc
+│   ├── HD01D_Data_009542_9999999910704302.nc
+│   ├── HD01D_Data_009573_9999999910704302.nc
+│   ├── HD01D_Data_009603_9999999910704302.nc
+│   ├── HD01D_Data_009617_9999999910704302.nc
+│   ├── HD01D_Data_009741_9999999910704302.nc
+│   ├── HD01D_Data_009746_9999999910704302.nc
+│   ├── HD01D_Data_009789_9999999910704302.nc
+│   ├── HD01D_Data_009961_9999999910704302.nc
+│   ├── HD01D_Data_009964_9999999910704365.nc
+│   ├── HD01D_Data_009965_9999999910704365.nc
+│   ├── HD01D_Data_009968_9999999910704365.nc
+│   ├── HD01D_Data_009977_9999999910704365.nc
+│   ├── HD01D_Data_009994_9999999910704365.nc
+│   ├── HD01D_Data_009998_9999999910704365.nc
+│   ├── HD01D_Data_009999_9999999910704365.nc
+│   ├── HD01D_Data_014015_9999999910704397.nc
+│   ├── HD01D_Data_014041_9999999910704397.nc
+│   ├── HD01D_Data_014046_9999999910704397.nc
+│   ├── HD01D_Data_014314_9999999910704402.nc
+│   ├── HD01D_Data_014318_9999999910704402.nc
+│   ├── HD01D_Data_014988_9999999910704906.nc
+│   ├── HD01D_Data_023000_9999999910706702.nc
+│   ├── HD01D_Data_023013_9999999910706703.nc
+│   ├── HD01D_Data_023034_9999999910706703.nc
+│   ├── HD01D_Data_023046_9999999910706703.nc
+│   ├── HD01D_Data_023083_9999999910706703.nc
+│   ├── HD01D_Data_023090_9999999910706703.nc
+│   ├── HD01D_Data_023842_9999999910706703.nc
+│   ├── HD01D_Data_023885_9999999910706703.nc
+│   ├── HD01D_Data_023887_9999999910706703.nc
+│   ├── HD01D_Data_040004_9999999910707406.nc
+│   ├── HD01D_Data_040043_9999999910707406.nc
+│   ├── HD01D_Data_040211_9999999910707406.nc
+│   ├── HD01D_Data_040842_9999999910707406.nc
+│   ├── HD01D_Data_040913_9999999910708200.nc
+│   ├── HD01D_Data_040958_9999999910708200.nc
+│   ├── HD01D_Data_040983_9999999910708200.nc
+│   ├── HD01D_Data_061087_9999999910708338.nc
+│   ├── HD01D_Data_061366_9999999910708338.nc
+│   ├── HD01D_Data_061375_9999999910708338.nc
+│   ├── HD01D_Data_061425_9999999910708338.nc
+│   ├── HD01D_Data_063292_9999999910708338.nc
+│   ├── HD01D_Data_066022_9999999910708353.nc
+│   ├── HD01D_Data_066037_9999999910708353.nc
+│   ├── HD01D_Data_066051_9999999910708353.nc
+│   ├── HD01D_Data_066059_9999999910708353.nc
+│   ├── HD01D_Data_066062_9999999910723658.nc
+│   ├── HD01D_Data_066137_9999999910708353.nc
+│   ├── HD01D_Data_066161_9999999910708353.nc
+│   ├── HD01D_Data_066194_9999999910708353.nc
+│   ├── HD01D_Data_066195_9999999910708353.nc
+│   ├── HD01D_Data_066212_9999999910708353.nc
+│   ├── HD01D_Data_066214_9999999910723658.nc
+│   ├── HD01D_Data_067105_9999999910708353.nc
+│   ├── HD01D_Data_067108_9999999910708353.nc
+│   ├── HD01D_Data_067113_9999999910708353.nc
+│   ├── HD01D_Data_067117_9999999910708403.nc
+│   ├── HD01D_Data_067119_9999999910708403.nc
+│   ├── HD01D_Data_068192_9999999910708403.nc
+│   ├── HD01D_Data_068257_9999999910708403.nc
+│   ├── HD01D_Data_068263_9999999910708403.nc
+│   ├── HD01D_Data_070014_9999999910708409.nc
+│   ├── HD01D_Data_070339_9999999910708409.nc
+│   ├── HD01D_Data_070349_9999999910708409.nc
+│   ├── HD01D_Data_070351_9999999910708409.nc
+│   ├── HD01D_Data_086038_9999999910708904.nc
+│   ├── HD01D_Data_086068_9999999910708904.nc
+│   ├── HD01D_Data_086071_9999999910708904.nc
+│   ├── HD01D_Data_086077_9999999910708904.nc
+│   ├── HD01D_Data_086104_9999999910708904.nc
+│   ├── HD01D_Data_086266_9999999910708904.nc
+│   ├── HD01D_Data_086282_9999999910708904.nc
+│   ├── HD01D_Data_086338_9999999910708904.nc
+│   ├── HD01D_Data_086361_9999999910708904.nc
+│   ├── HD01D_Data_086371_9999999910708904.nc
+│   ├── HD01D_Data_086372_9999999910708835.nc
+│   ├── HD01D_Data_086383_9999999910708835.nc
+│   ├── HD01D_Data_086388_9999999910708835.nc
+│   ├── HD01D_Data_087031_9999999910708835.nc
+│   ├── HD01D_Data_087185_9999999910708835.nc
+│   ├── HD01D_Data_088162_9999999910708835.nc
+│   ├── HD01D_Data_094008_9999999910708871.nc
+│   ├── HD01D_Data_094029_9999999910708871.nc
+│   ├── HD01D_Data_094087_9999999910708871.nc
+│   ├── HD01D_Data_094212_9999999910708872.nc
+│   ├── HD01D_Data_094250_9999999910708872.nc
+│   ├── HD01D_Data_094254_9999999910708872.nc
+│   ├── HD01D_Data_140007_9999999910709216.nc
+│   └── HD01D_Data_140009_9999999910709216.nc
+├── station_corrected
+├── station_corrected_rv
+│   ├── HD01D_Data_009021_9999999910704119.nc
+│   ├── HD01D_Data_009053_9999999910704119.nc
+│   ├── HD01D_Data_009172_9999999910704302.nc
+│   ├── HD01D_Data_009193_9999999910704302.nc
+│   ├── HD01D_Data_009215_9999999910704302.nc
+│   ├── HD01D_Data_009225_9999999910704302.nc
+│   ├── HD01D_Data_009240_9999999910704302.nc
+│   ├── HD01D_Data_009256_9999999910704302.nc
+│   ├── HD01D_Data_009281_9999999910704302.nc
+│   ├── HD01D_Data_009977_9999999910704365.nc
+│   ├── HD01D_Data_014015_9999999910704397.nc
+│   ├── HD01D_Data_014041_9999999910704397.nc
+│   ├── HD01D_Data_014046_9999999910704397.nc
+│   ├── HD01D_Data_014314_9999999910704402.nc
+│   ├── HD01D_Data_014318_9999999910704402.nc
+│   ├── HD01D_Data_014988_9999999910704906.nc
+│   ├── HD01D_Data_023000_9999999910706702.nc
+│   ├── HD01D_Data_023013_9999999910706703.nc
+│   ├── HD01D_Data_023034_9999999910706703.nc
+│   ├── HD01D_Data_023046_9999999910706703.nc
+│   ├── HD01D_Data_023083_9999999910706703.nc
+│   ├── HD01D_Data_023090_9999999910706703.nc
+│   ├── HD01D_Data_023842_9999999910706703.nc
+│   ├── HD01D_Data_023885_9999999910706703.nc
+│   ├── HD01D_Data_023887_9999999910706703.nc
+│   ├── HD01D_Data_040004_9999999910707406.nc
+│   ├── HD01D_Data_040043_9999999910707406.nc
+│   ├── HD01D_Data_040211_9999999910707406.nc
+│   ├── HD01D_Data_040842_9999999910707406.nc
+│   ├── HD01D_Data_040913_9999999910708200.nc
+│   ├── HD01D_Data_040958_9999999910708200.nc
+│   ├── HD01D_Data_040983_9999999910708200.nc
+│   ├── HD01D_Data_061087_9999999910708338.nc
+│   ├── HD01D_Data_061366_9999999910708338.nc
+│   ├── HD01D_Data_061375_9999999910708338.nc
+│   ├── HD01D_Data_061425_9999999910708338.nc
+│   ├── HD01D_Data_063292_9999999910708338.nc
+│   ├── HD01D_Data_066037_9999999910708353.nc
+│   ├── HD01D_Data_066059_9999999910708353.nc
+│   ├── HD01D_Data_066062_9999999910723658.nc
+│   ├── HD01D_Data_066137_9999999910708353.nc
+│   ├── HD01D_Data_066161_9999999910708353.nc
+│   ├── HD01D_Data_066194_9999999910708353.nc
+│   ├── HD01D_Data_066195_9999999910708353.nc
+│   ├── HD01D_Data_066212_9999999910708353.nc
+│   ├── HD01D_Data_066214_9999999910723658.nc
+│   ├── HD01D_Data_067105_9999999910708353.nc
+│   ├── HD01D_Data_067108_9999999910708353.nc
+│   ├── HD01D_Data_067113_9999999910708353.nc
+│   ├── HD01D_Data_067117_9999999910708403.nc
+│   ├── HD01D_Data_067119_9999999910708403.nc
+│   ├── HD01D_Data_068192_9999999910708403.nc
+│   ├── HD01D_Data_068257_9999999910708403.nc
+│   ├── HD01D_Data_068263_9999999910708403.nc
+│   ├── HD01D_Data_070014_9999999910708409.nc
+│   ├── HD01D_Data_070339_9999999910708409.nc
+│   ├── HD01D_Data_070349_9999999910708409.nc
+│   ├── HD01D_Data_070351_9999999910708409.nc
+│   ├── HD01D_Data_086038_9999999910708904.nc
+│   ├── HD01D_Data_086068_9999999910708904.nc
+│   ├── HD01D_Data_086071_9999999910708904.nc
+│   ├── HD01D_Data_086077_9999999910708904.nc
+│   ├── HD01D_Data_086104_9999999910708904.nc
+│   ├── HD01D_Data_086266_9999999910708904.nc
+│   ├── HD01D_Data_086282_9999999910708904.nc
+│   ├── HD01D_Data_086338_9999999910708904.nc
+│   ├── HD01D_Data_086361_9999999910708904.nc
+│   ├── HD01D_Data_086371_9999999910708904.nc
+│   ├── HD01D_Data_086372_9999999910708835.nc
+│   ├── HD01D_Data_086383_9999999910708835.nc
+│   ├── HD01D_Data_086388_9999999910708835.nc
+│   ├── HD01D_Data_087031_9999999910708835.nc
+│   ├── HD01D_Data_087185_9999999910708835.nc
+│   ├── HD01D_Data_088162_9999999910708835.nc
+│   ├── HD01D_Data_094008_9999999910708871.nc
+│   ├── HD01D_Data_094029_9999999910708871.nc
+│   ├── HD01D_Data_094087_9999999910708871.nc
+│   ├── HD01D_Data_094212_9999999910708872.nc
+│   ├── HD01D_Data_094250_9999999910708872.nc
+│   ├── HD01D_Data_094254_9999999910708872.nc
+│   ├── HD01D_Data_140007_9999999910709216.nc
+│   ├── HD01D_Data_140009_9999999910709216.nc
+│   ├── p2_event_windows_noNAN_all_stations_Adelaide.pkl
+│   ├── p2_event_windows_noNAN_all_stations_Australian Capital Territory.pkl
+│   ├── p2_event_windows_noNAN_all_stations_Brisbane.pkl
+│   ├── p2_event_windows_noNAN_all_stations_Darwin.pkl
+│   ├── p2_event_windows_noNAN_all_stations_Hobart.pkl
+│   ├── p2_event_windows_noNAN_all_stations_Melbourne.pkl
+│   ├── p2_event_windows_noNAN_all_stations_Perth.pkl
+│   ├── p2_event_windows_noNAN_all_stations_revised.pkl
+│   ├── p2_event_windows_noNAN_all_stations_Sydney.pkl
+│   ├── p2_top_10_events_all_stations.pkl
+│   ├── p4_995perc_trend_P_rate.csv
+│   ├── p4_999perc_trend_P_rate.csv
+│   ├── p4_999perc_trend_P_rate_excluding_zero_Brisbane.csv
+│   ├── p4_999perc_trend_P_rate_excluding_zero.csv
+│   ├── p4_999perc_trend_P_rate_excluding_zero_Perth.csv
+│   ├── p4_99perc_trend_P_rate.csv
+│   ├── p4_99perc_trend_P_rate_excluding_zero_Brisbane.csv
+│   ├── p4_99perc_trend_P_rate_excluding_zero.csv
+│   └── p4_99perc_trend_P_rate_excluding_zero_Perth.csv
+├── station_daily
+│   ├── IDCJAC0009_009021_1800_Data.csv
+│   ├── IDCJAC0009_009025_1800_Data.csv
+│   ├── IDCJAC0009_009053_1800_Data.csv
+│   ├── IDCJAC0009_009106_1800_Data.csv
+│   ├── IDCJAC0009_009127_1800_Data.csv
+│   ├── IDCJAC0009_009151_1800_Data.csv
+│   ├── IDCJAC0009_009172_1800_Data.csv
+│   ├── IDCJAC0009_009182_1800_Data.csv
+│   ├── IDCJAC0009_009192_1800_Data.csv
+│   ├── IDCJAC0009_009193_1800_Data.csv
+│   ├── IDCJAC0009_009215_1800_Data.csv
+│   ├── IDCJAC0009_009225_1800_Data.csv
+│   ├── IDCJAC0009_009240_1800_Data.csv
+│   ├── IDCJAC0009_009256_1800_Data.csv
+│   ├── IDCJAC0009_009263_1800_Data.csv
+│   ├── IDCJAC0009_009281_1800_Data.csv
+│   ├── IDCJAC0009_009977_1800_Data.csv
+│   ├── IDCJAC0009_014015_1800_Data.csv
+│   ├── IDCJAC0009_014041_1800_Data.csv
+│   ├── IDCJAC0009_014046_1800_Data.csv
+│   ├── IDCJAC0009_014314_1800_Data.csv
+│   ├── IDCJAC0009_014318_1800_Data.csv
+│   ├── IDCJAC0009_014988_1800_Data.csv
+│   ├── IDCJAC0009_023000_1800_Data.csv
+│   ├── IDCJAC0009_023013_1800_Data.csv
+│   ├── IDCJAC0009_023034_1800_Data.csv
+│   ├── IDCJAC0009_023046_1800_Data.csv
+│   ├── IDCJAC0009_023083_1800_Data.csv
+│   ├── IDCJAC0009_023090_1800_Data.csv
+│   ├── IDCJAC0009_023842_1800_Data.csv
+│   ├── IDCJAC0009_023885_1800_Data.csv
+│   ├── IDCJAC0009_023887_1800_Data.csv
+│   ├── IDCJAC0009_040004_1800_Data.csv
+│   ├── IDCJAC0009_040043_1800_Data.csv
+│   ├── IDCJAC0009_040211_1800_Data.csv
+│   ├── IDCJAC0009_040842_1800_Data.csv
+│   ├── IDCJAC0009_040913_1800_Data.csv
+│   ├── IDCJAC0009_040958_1800_Data.csv
+│   ├── IDCJAC0009_040983_1800_Data.csv
+│   ├── IDCJAC0009_061087_1800_Data.csv
+│   ├── IDCJAC0009_061366_1800_Data.csv
+│   ├── IDCJAC0009_061375_1800_Data.csv
+│   ├── IDCJAC0009_061425_1800_Data.csv
+│   ├── IDCJAC0009_063292_1800_Data.csv
+│   ├── IDCJAC0009_066037_1800_Data.csv
+│   ├── IDCJAC0009_066059_1800_Data.csv
+│   ├── IDCJAC0009_066062_1800_Data.csv
+│   ├── IDCJAC0009_066137_1800_Data.csv
+│   ├── IDCJAC0009_066161_1800_Data.csv
+│   ├── IDCJAC0009_066194_1800_Data.csv
+│   ├── IDCJAC0009_066195_1800_Data.csv
+│   ├── IDCJAC0009_066212_1800_Data.csv
+│   ├── IDCJAC0009_066214_1800_Data.csv
+│   ├── IDCJAC0009_067105_1800_Data.csv
+│   ├── IDCJAC0009_067108_1800_Data.csv
+│   ├── IDCJAC0009_067113_1800_Data.csv
+│   ├── IDCJAC0009_067117_1800_Data.csv
+│   ├── IDCJAC0009_067119_1800_Data.csv
+│   ├── IDCJAC0009_068192_1800_Data.csv
+│   ├── IDCJAC0009_068257_1800_Data.csv
+│   ├── IDCJAC0009_068263_1800_Data.csv
+│   ├── IDCJAC0009_070014_1800_Data.csv
+│   ├── IDCJAC0009_070339_1800_Data.csv
+│   ├── IDCJAC0009_070349_1800_Data.csv
+│   ├── IDCJAC0009_070351_1800_Data.csv
+│   ├── IDCJAC0009_086038_1800_Data.csv
+│   ├── IDCJAC0009_086068_1800_Data.csv
+│   ├── IDCJAC0009_086071_1800_Data.csv
+│   ├── IDCJAC0009_086077_1800_Data.csv
+│   ├── IDCJAC0009_086104_1800_Data.csv
+│   ├── IDCJAC0009_086266_1800_Data.csv
+│   ├── IDCJAC0009_086282_1800_Data.csv
+│   ├── IDCJAC0009_086338_1800_Data.csv
+│   ├── IDCJAC0009_086361_1800_Data.csv
+│   ├── IDCJAC0009_086372_1800_Data.csv
+│   ├── IDCJAC0009_086383_1800_Data.csv
+│   ├── IDCJAC0009_086388_1800_Data.csv
+│   ├── IDCJAC0009_087031_1800_Data.csv
+│   ├── IDCJAC0009_087185_1800_Data.csv
+│   ├── IDCJAC0009_088162_1800_Data.csv
+│   ├── IDCJAC0009_094008_1800_Data.csv
+│   ├── IDCJAC0009_094029_1800_Data.csv
+│   ├── IDCJAC0009_094087_1800_Data.csv
+│   ├── IDCJAC0009_094212_1800_Data.csv
+│   ├── IDCJAC0009_094250_1800_Data.csv
+│   ├── IDCJAC0009_094254_1800_Data.csv
+│   ├── IDCJAC0009_140007_1800_Data.csv
+│   └── IDCJAC0009_140009_1800_Data.csv
+├── step1_data_mask_daily_5min_rv_Kim.ipynb
+├── step2-1_supplementary_extremes_trends_yk.ipynb
+├── step2_extremes_trends_map_yk.ipynb
+├── step3-1_map_all_highest_10_yk.ipynb
+├── step3_highest_10_yk.ipynb
+├── step4_barra_aws_extreme_test_Kim.ipynb
+├── testing_script
+│   ├── extremes_melbourne.ipynb
+│   ├── GCCSA_2021_AUST_SHP_GDA2020
+│   │   ├── GCCSA_2021_AUST_GDA2020.dbf
+│   │   ├── GCCSA_2021_AUST_GDA2020.prj
+│   │   ├── GCCSA_2021_AUST_GDA2020.shp
+│   │   ├── GCCSA_2021_AUST_GDA2020.shx
+│   │   └── GCCSA_2021_AUST_GDA2020.xml
+│   ├── higest_10.ipynb
+│   ├── highest_10_method.ipynb
+│   ├── highest_10_solving_issue.ipynb
+│   ├── leena
+│   │   ├── p1_data_mask_daily_5min.ipynb
+│   │   ├── p2_all_stations_events.ipynb
+│   │   ├── p3_moving_aggregation.ipynb
+│   │   └── p4_99perc_trend.ipynb
+│   ├── p4_trend_calculation_syd.ipynb
+│   ├── station_corrected
+│   │   ├── HD01D_Data_086038_9999999910708904.nc
+│   │   ├── HD01D_Data_086068_9999999910708904.nc
+│   │   ├── HD01D_Data_086071_9999999910708904.nc
+│   │   ├── HD01D_Data_086077_9999999910708904.nc
+│   │   ├── HD01D_Data_086104_9999999910708904.nc
+│   │   ├── HD01D_Data_086266_9999999910708904.nc
+│   │   ├── HD01D_Data_086282_9999999910708904.nc
+│   │   ├── HD01D_Data_086338_9999999910708904.nc
+│   │   ├── HD01D_Data_086361_9999999910708904.nc
+│   │   ├── HD01D_Data_086371_9999999910708904.nc
+│   │   ├── HD01D_Data_086372_9999999910708835.nc
+│   │   ├── HD01D_Data_086383_9999999910708835.nc
+│   │   ├── HD01D_Data_086388_9999999910708835.nc
+│   │   ├── HD01D_Data_087031_9999999910708835.nc
+│   │   ├── HD01D_Data_087185_9999999910708835.nc
+│   │   └── HD01D_Data_088162_9999999910708835.nc
+│   ├── step3_highest_10_yk.ipynb
+│   └── Untitled.ipynb
+├── tree_nesp.txt
+└── wrf
+    ├── dump_barra2_ncdump.sh
+    ├── FPS_README
+    ├── ncdump.bash
+    ├── ncl_v4.15.log
+    ├── prep_barra2_common.ncl
+    ├── probe_time_and_dims.ncl
+    ├── tree_2016.txt
+    ├── wps
+    │   └── int
+    │       ├── BARRA2:2016-01-28_00:00:00:2016-01-28_00
+    │       ├── BARRA2:2016-01-28_00:30:00:2016-01-28_00
+    │       ├── BARRA2:2016-01-28_01:00:00:2016-01-28_01
+    │       ├── BARRA2:2016-01-28_01:30:00:2016-01-28_01
+    │       ├── BARRA2:2016-01-28_02:00:00:2016-01-28_02
+    │       ├── BARRA2:2016-01-28_02:30:00:2016-01-28_02
+    │       ├── BARRA2:2016-01-28_03:00:00:2016-01-28_03
+    │       ├── BARRA2:2016-01-28_03:30:00:2016-01-28_03
+    │       ├── BARRA2:2016-01-28_04:00:00:2016-01-28_04
+    │       ├── BARRA2:2016-01-28_04:30:00:2016-01-28_04
+    │       ├── BARRA2:2016-01-28_05:00:00:2016-01-28_05
+    │       ├── BARRA2:2016-01-28_05:30:00:2016-01-28_05
+    │       ├── BARRA2:2016-01-28_06:00:00:2016-01-28_06
+    │       ├── BARRA2:2016-01-28_06:30:00:2016-01-28_06
+    │       ├── BARRA2:2016-01-28_07:00:00:2016-01-28_07
+    │       ├── BARRA2:2016-01-28_07:30:00:2016-01-28_07
+    │       ├── BARRA2:2016-01-28_08:00:00:2016-01-28_08
+    │       ├── BARRA2:2016-01-28_08:30:00:2016-01-28_08
+    │       ├── BARRA2:2016-01-28_09:00:00:2016-01-28_09
+    │       ├── BARRA2:2016-01-28_09:30:00:2016-01-28_09
+    │       ├── BARRA2:2016-01-28_10:00:00:2016-01-28_10
+    │       ├── BARRA2:2016-01-28_10:30:00:2016-01-28_10
+    │       ├── BARRA2:2016-01-28_11:00:00:2016-01-28_11
+    │       ├── BARRA2:2016-01-28_11:30:00:2016-01-28_11
+    │       ├── BARRA2:2016-01-28_12:00:00:2016-01-28_12
+    │       ├── BARRA2:2016-01-28_12:30:00:2016-01-28_12
+    │       ├── BARRA2:2016-01-28_13:00:00:2016-01-28_13
+    │       ├── BARRA2:2016-01-28_13:30:00:2016-01-28_13
+    │       ├── BARRA2:2016-01-28_14:00:00:2016-01-28_14
+    │       ├── BARRA2:2016-01-28_14:30:00:2016-01-28_14
+    │       ├── BARRA2:2016-01-28_15:00:00:2016-01-28_15
+    │       ├── BARRA2:2016-01-28_15:30:00:2016-01-28_15
+    │       ├── BARRA2:2016-01-28_16:00:00:2016-01-28_16
+    │       ├── BARRA2:2016-01-28_16:30:00:2016-01-28_16
+    │       ├── BARRA2:2016-01-28_17:00:00:2016-01-28_17
+    │       ├── BARRA2:2016-01-28_17:30:00:2016-01-28_17
+    │       ├── BARRA2:2016-01-28_18:00:00:2016-01-28_18
+    │       ├── BARRA2:2016-01-28_18:30:00:2016-01-28_18
+    │       ├── BARRA2:2016-01-28_19:00:00:2016-01-28_19
+    │       ├── BARRA2:2016-01-28_19:30:00:2016-01-28_19
+    │       ├── BARRA2:2016-01-28_20:00:00:2016-01-28_20
+    │       ├── BARRA2:2016-01-28_20:30:00:2016-01-28_20
+    │       ├── BARRA2:2016-01-28_21:00:00:2016-01-28_21
+    │       ├── BARRA2:2016-01-28_21:30:00:2016-01-28_21
+    │       ├── BARRA2:2016-01-28_22:00:00:2016-01-28_22
+    │       ├── BARRA2:2016-01-28_22:30:00:2016-01-28_22
+    │       ├── BARRA2:2016-01-28_23:00:00:2016-01-28_23
+    │       ├── BARRA2:2016-01-28_23:30:00:2016-01-28_23
+    │       ├── BARRA2:2016-01-29_00:00:00:2016-01-29_00
+    │       ├── BARRA2:2016-01-29_00:30:00:2016-01-29_00
+    │       ├── BARRA2:2016-01-29_01:00:00:2016-01-29_01
+    │       ├── BARRA2:2016-01-29_01:30:00:2016-01-29_01
+    │       ├── BARRA2:2016-01-29_02:00:00:2016-01-29_02
+    │       ├── BARRA2:2016-01-29_02:30:00:2016-01-29_02
+    │       ├── BARRA2:2016-01-29_03:00:00:2016-01-29_03
+    │       ├── BARRA2:2016-01-29_03:30:00:2016-01-29_03
+    │       ├── BARRA2:2016-01-29_04:00:00:2016-01-29_04
+    │       ├── BARRA2:2016-01-29_04:30:00:2016-01-29_04
+    │       ├── BARRA2:2016-01-29_05:00:00:2016-01-29_05
+    │       ├── BARRA2:2016-01-29_05:30:00:2016-01-29_05
+    │       ├── BARRA2:2016-01-29_06:00:00:2016-01-29_06
+    │       ├── BARRA2:2016-01-29_06:30:00:2016-01-29_06
+    │       ├── BARRA2:2016-01-29_07:00:00:2016-01-29_07
+    │       ├── BARRA2:2016-01-29_07:30:00:2016-01-29_07
+    │       ├── BARRA2:2016-01-29_08:00:00:2016-01-29_08
+    │       ├── BARRA2:2016-01-29_08:30:00:2016-01-29_08
+    │       ├── BARRA2:2016-01-29_09:00:00:2016-01-29_09
+    │       ├── BARRA2:2016-01-29_09:30:00:2016-01-29_09
+    │       ├── BARRA2:2016-01-29_10:00:00:2016-01-29_10
+    │       ├── BARRA2:2016-01-29_10:30:00:2016-01-29_10
+    │       ├── BARRA2:2016-01-29_11:00:00:2016-01-29_11
+    │       ├── BARRA2:2016-01-29_11:30:00:2016-01-29_11
+    │       ├── BARRA2:2016-01-29_12:00:00:2016-01-29_12
+    │       ├── BARRA2:2016-01-29_12:30:00:2016-01-29_12
+    │       ├── BARRA2:2016-01-29_13:00:00:2016-01-29_13
+    │       ├── BARRA2:2016-01-29_13:30:00:2016-01-29_13
+    │       ├── BARRA2:2016-01-29_14:00:00:2016-01-29_14
+    │       ├── BARRA2:2016-01-29_14:30:00:2016-01-29_14
+    │       ├── BARRA2:2016-01-29_15:00:00:2016-01-29_15
+    │       ├── BARRA2:2016-01-29_15:30:00:2016-01-29_15
+    │       ├── BARRA2:2016-01-29_16:00:00:2016-01-29_16
+    │       ├── BARRA2:2016-01-29_16:30:00:2016-01-29_16
+    │       ├── BARRA2:2016-01-29_17:00:00:2016-01-29_17
+    │       ├── BARRA2:2016-01-29_17:30:00:2016-01-29_17
+    │       ├── BARRA2:2016-01-29_18:00:00:2016-01-29_18
+    │       ├── BARRA2:2016-01-29_18:30:00:2016-01-29_18
+    │       ├── BARRA2:2016-01-29_19:00:00:2016-01-29_19
+    │       ├── BARRA2:2016-01-29_19:30:00:2016-01-29_19
+    │       ├── BARRA2:2016-01-29_20:00:00:2016-01-29_20
+    │       ├── BARRA2:2016-01-29_20:30:00:2016-01-29_20
+    │       ├── BARRA2:2016-01-29_21:00:00:2016-01-29_21
+    │       ├── BARRA2:2016-01-29_21:30:00:2016-01-29_21
+    │       ├── BARRA2:2016-01-29_22:00:00:2016-01-29_22
+    │       ├── BARRA2:2016-01-29_22:30:00:2016-01-29_22
+    │       ├── BARRA2:2016-01-29_23:00:00:2016-01-29_23
+    │       ├── BARRA2:2016-01-29_23:30:00:2016-01-29_23
+    │       ├── BARRA2:2016-01-30_00:00:00:2016-01-30_00
+    │       ├── BARRA2:2016-01-30_00:30:00:2016-01-30_00
+    │       ├── BARRA2:2016-01-30_01:00:00:2016-01-30_01
+    │       ├── BARRA2:2016-01-30_01:30:00:2016-01-30_01
+    │       ├── BARRA2:2016-01-30_02:00:00:2016-01-30_02
+    │       ├── BARRA2:2016-01-30_02:30:00:2016-01-30_02
+    │       ├── BARRA2:2016-01-30_03:00:00:2016-01-30_03
+    │       ├── BARRA2:2016-01-30_03:30:00:2016-01-30_03
+    │       ├── BARRA2:2016-01-30_04:00:00:2016-01-30_04
+    │       ├── BARRA2:2016-01-30_04:30:00:2016-01-30_04
+    │       ├── BARRA2:2016-01-30_05:00:00:2016-01-30_05
+    │       ├── BARRA2:2016-01-30_05:30:00:2016-01-30_05
+    │       ├── BARRA2:2016-01-30_06:00:00:2016-01-30_06
+    │       ├── BARRA2:2016-01-30_06:30:00:2016-01-30_06
+    │       ├── BARRA2:2016-01-30_07:00:00:2016-01-30_07
+    │       ├── BARRA2:2016-01-30_07:30:00:2016-01-30_07
+    │       ├── BARRA2:2016-01-30_08:00:00:2016-01-30_08
+    │       ├── BARRA2:2016-01-30_08:30:00:2016-01-30_08
+    │       ├── BARRA2:2016-01-30_09:00:00:2016-01-30_09
+    │       ├── BARRA2:2016-01-30_09:30:00:2016-01-30_09
+    │       ├── BARRA2:2016-01-30_10:00:00:2016-01-30_10
+    │       ├── BARRA2:2016-01-30_10:30:00:2016-01-30_10
+    │       ├── BARRA2:2016-01-30_11:00:00:2016-01-30_11
+    │       ├── BARRA2:2016-01-30_11:30:00:2016-01-30_11
+    │       ├── BARRA2:2016-01-30_12:00:00:2016-01-30_12
+    │       ├── BARRA2:2016-01-30_12:30:00:2016-01-30_12
+    │       ├── BARRA2:2016-01-30_13:00:00:2016-01-30_13
+    │       ├── BARRA2:2016-01-30_13:30:00:2016-01-30_13
+    │       ├── BARRA2:2016-01-30_14:00:00:2016-01-30_14
+    │       ├── BARRA2:2016-01-30_14:30:00:2016-01-30_14
+    │       ├── BARRA2:2016-01-30_15:00:00:2016-01-30_15
+    │       ├── BARRA2:2016-01-30_15:30:00:2016-01-30_15
+    │       ├── BARRA2:2016-01-30_16:00:00:2016-01-30_16
+    │       ├── BARRA2:2016-01-30_16:30:00:2016-01-30_16
+    │       ├── BARRA2:2016-01-30_17:00:00:2016-01-30_17
+    │       ├── BARRA2:2016-01-30_17:30:00:2016-01-30_17
+    │       ├── BARRA2:2016-01-30_18:00:00:2016-01-30_18
+    │       ├── BARRA2:2016-01-30_18:30:00:2016-01-30_18
+    │       ├── BARRA2:2016-01-30_19:00:00:2016-01-30_19
+    │       ├── BARRA2:2016-01-30_19:30:00:2016-01-30_19
+    │       ├── BARRA2:2016-01-30_20:00:00:2016-01-30_20
+    │       ├── BARRA2:2016-01-30_20:30:00:2016-01-30_20
+    │       ├── BARRA2:2016-01-30_21:00:00:2016-01-30_21
+    │       ├── BARRA2:2016-01-30_21:30:00:2016-01-30_21
+    │       ├── BARRA2:2016-01-30_22:00:00:2016-01-30_22
+    │       ├── BARRA2:2016-01-30_22:30:00:2016-01-30_22
+    │       ├── BARRA2:2016-01-30_23:00:00:2016-01-30_23
+    │       ├── BARRA2:2016-01-30_23:30:00:2016-01-30_23
+    │       ├── BARRA2:2016-01-31_00:00:00:2016-01-31_00
+    │       ├── BARRA2:2016-01-31_00:30:00:2016-01-31_00
+    │       ├── BARRA2:2016-01-31_01:00:00:2016-01-31_01
+    │       ├── BARRA2:2016-01-31_01:30:00:2016-01-31_01
+    │       ├── BARRA2:2016-01-31_02:00:00:2016-01-31_02
+    │       ├── BARRA2:2016-01-31_02:30:00:2016-01-31_02
+    │       ├── BARRA2:2016-01-31_03:00:00:2016-01-31_03
+    │       ├── BARRA2:2016-01-31_03:30:00:2016-01-31_03
+    │       ├── BARRA2:2016-01-31_04:00:00:2016-01-31_04
+    │       ├── BARRA2:2016-01-31_04:30:00:2016-01-31_04
+    │       ├── BARRA2:2016-01-31_05:00:00:2016-01-31_05
+    │       ├── BARRA2:2016-01-31_05:30:00:2016-01-31_05
+    │       ├── BARRA2:2016-01-31_06:00:00:2016-01-31_06
+    │       ├── BARRA2:2016-01-31_06:30:00:2016-01-31_06
+    │       ├── BARRA2:2016-01-31_07:00:00:2016-01-31_07
+    │       ├── BARRA2:2016-01-31_07:30:00:2016-01-31_07
+    │       ├── BARRA2:2016-01-31_08:00:00:2016-01-31_08
+    │       ├── BARRA2:2016-01-31_08:30:00:2016-01-31_08
+    │       ├── BARRA2:2016-01-31_09:00:00:2016-01-31_09
+    │       ├── BARRA2:2016-01-31_09:30:00:2016-01-31_09
+    │       ├── BARRA2:2016-01-31_10:00:00:2016-01-31_10
+    │       ├── BARRA2:2016-01-31_10:30:00:2016-01-31_10
+    │       ├── BARRA2:2016-01-31_11:00:00:2016-01-31_11
+    │       ├── BARRA2:2016-01-31_11:30:00:2016-01-31_11
+    │       ├── BARRA2:2016-01-31_12:00:00:2016-01-31_12
+    │       ├── BARRA2:2016-01-31_12:30:00:2016-01-31_12
+    │       ├── BARRA2:2016-01-31_13:00:00:2016-01-31_13
+    │       ├── BARRA2:2016-01-31_13:30:00:2016-01-31_13
+    │       ├── BARRA2:2016-01-31_14:00:00:2016-01-31_14
+    │       ├── BARRA2:2016-01-31_14:30:00:2016-01-31_14
+    │       ├── BARRA2:2016-01-31_15:00:00:2016-01-31_15
+    │       ├── BARRA2:2016-01-31_15:30:00:2016-01-31_15
+    │       ├── BARRA2:2016-01-31_16:00:00:2016-01-31_16
+    │       ├── BARRA2:2016-01-31_16:30:00:2016-01-31_16
+    │       ├── BARRA2:2016-01-31_17:00:00:2016-01-31_17
+    │       ├── BARRA2:2016-01-31_17:30:00:2016-01-31_17
+    │       ├── BARRA2:2016-01-31_18:00:00:2016-01-31_18
+    │       ├── BARRA2:2016-01-31_18:30:00:2016-01-31_18
+    │       ├── BARRA2:2016-01-31_19:00:00:2016-01-31_19
+    │       ├── BARRA2:2016-01-31_19:30:00:2016-01-31_19
+    │       ├── BARRA2:2016-01-31_20:00:00:2016-01-31_20
+    │       ├── BARRA2:2016-01-31_20:30:00:2016-01-31_20
+    │       ├── BARRA2:2016-01-31_21:00:00:2016-01-31_21
+    │       ├── BARRA2:2016-01-31_21:30:00:2016-01-31_21
+    │       ├── BARRA2:2016-01-31_22:00:00:2016-01-31_22
+    │       ├── BARRA2:2016-01-31_22:30:00:2016-01-31_22
+    │       ├── BARRA2:2016-01-31_23:00:00:2016-01-31_23
+    │       ├── BARRA2:2016-01-31_23:30:00:2016-01-31_23
+    │       ├── BARRA2:2016-02-01_00:00:00:2016-02-01_00
+    │       ├── BARRA2:2016-02-01_00:30:00:2016-02-01_00
+    │       ├── BARRA2:2016-02-01_01:00:00:2016-02-01_01
+    │       ├── BARRA2:2016-02-01_01:30:00:2016-02-01_01
+    │       ├── BARRA2:2016-02-01_02:00:00:2016-02-01_02
+    │       ├── BARRA2:2016-02-01_02:30:00:2016-02-01_02
+    │       ├── BARRA2:2016-02-01_03:00:00:2016-02-01_03
+    │       ├── BARRA2:2016-02-01_03:30:00:2016-02-01_03
+    │       ├── BARRA2:2016-02-01_04:00:00:2016-02-01_04
+    │       ├── BARRA2:2016-02-01_04:30:00:2016-02-01_04
+    │       ├── BARRA2:2016-02-01_05:00:00:2016-02-01_05
+    │       ├── BARRA2:2016-02-01_05:30:00:2016-02-01_05
+    │       └── BARRA2:2016-02-01_06:00:00:2016-02-01_06
+    ├── WPSandReal_nci_gadi_mdss_R1.deck
+    ├── WPS_nci_gadi_R1.deck
+    ├── wrfint_barra_v4.15.ncl
+    ├── wrfint_barra_v4.15.pbs
+    ├── wrfint_barra_v4.15.pbs.o147444021
+    └── wrfint_out
+
+17 directories, 721 files
