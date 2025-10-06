@@ -60,67 +60,65 @@ Assumptions / dependencies:
 
 3) Create WRF intermediate files using BARRA2
 
-This repository contains an NCL script that converts BARRA2 NetCDF
-fields into WPS/WRF intermediate files suitable for use with `metgrid`
-and WRF real-data runs.
+### Python converter 
 
-Script of interest:
-- `wrf/wrfint_barra_v4.15.ncl`
+Script:
+- `wrf/barra_to_int.py`
 
-Usage (example)
+Helper modules (bundled here):
+- `wrf/WPSUtils.py`, `wrf/fortran_io.py`
 
-Set the environment variables expected by the NCL script and run it with NCL:
+What it does:
+- Robust file/variable matching across BARRA2 naming variants
+- Reads pressure-level fields (TT, UU, VV, SPECHUMD, GHT) and single-level
+  PMSL and PSFC; optionally 2-m/10-m fields
+- Writes correct WPS INTERMEDIATE records with LatLon projection metadata
+
+Quick usage (example):
 
 ```bash
-export YEAR=2016
-export MONTH=01
-export OUTDIR="/path/to/wps/int"
-export FGNAME="BARRA2"
 export BARRA2_ROOT="/g/data/w28/chs548/BARRA2_For_WRF"
 
-# Run the NCL conversion (requires NCL installed and NCARG root configured)
-ncl wrf/wrfint_barra_v4.15.ncl
+python wrf/barra_to_int.py \
+  --root "$BARRA2_ROOT" \
+  --vars TT,UU,VV,SPECHUMD,GHT,PMSL,PSFC \
+  --outdir /path/to/wps/int \
+  --prefix BARRA2 \
+  --alias-hh \
+  --verbose \
+  2016-01-28_00 2016-02-01_00 6
 ```
 
-Key notes about the NCL script (`wrf/wrfint_barra_v4.15.ncl`):
-- Expects BARRA2 files arranged as `/.../BARRA2_For_WRF/YYYY/MM/<CYCLE>/nc/`
-  with subfolders `WRFPRS1`, `WRFPRS2`, `WRFSLV`, `WRFSURF` containing
-  variables such as `air_temp_uv`, `geop_ht_uv`, `wnd_ucmp`, `wnd_vcmp`,
-  `mslp`, `sfc_pres`, `temp_scrn`, `qsair_scrn`, `uwnd10m`, `vwnd10m`.
-- Environment variables control input month/year, output directory and
-  the `fgname` used in `namelist.wps`.
-- The script normalizes lat/lon grids, unpacks scaled NetCDF variables,
-  computes relative humidity if only specific humidity is present, and
-  writes one WPS intermediate file per variable/time slice.
+Arguments of interest:
+- `--root`: BARRA2 root directory
+- `--outdir`: destination for INTERMEDIATE files
+- `--prefix`: prefix used by metgrid (e.g., BARRA2)
+- `--vars`: comma-separated selection; defaults to `TT,UU,VV,SPECHUMD,GHT,PMSL,PSFC`
+- `start end interval`: start/end (inclusive) as `YYYY-MM-DD_HH` and step in hours
+- `--alias-hh`: also write hour-only aliases `PREFIX:YYYY-MM-DD_HH`
 
-Prerequisites for running the NCL script
-- NCL (NCAR Command Language) installed and `NCARG_ROOT` set.
-- NetCDF libraries accessible to NCL.
-- Access to the BARRA2 data tree described above.
+PBS batch example (template provided):
+- See `wrf/wrfint_barra_py_v1.pbs` for a ready-to-adapt job script that
+  loads a Python environment and calls `barra_to_int.py` over a time range.
+
+Python prerequisites:
+- Python 3.8+
+- `netCDF4`, `numpy` available in your environment
+- The bundled `WPSUtils.py` and `fortran_io.py` must be importable (they
+  live alongside the script inside `wrf/`). If needed, run from that folder
+  or add it to `PYTHONPATH`.
+
+Attribution:
+- The converters and INTERMEDIATE writing logic in this repo are adapted
+  from NCAR's era5_to_int project: https://github.com/NCAR/era5_to_int/tree/main
+  with local adjustments for BARRA2 variable names, directory layout, and
+  additional robustness for file/variable discovery.
 
 Repository layout (high level)
 
 - `wrf/` — NCL scripts, helpers and decks used for WRF/WPS conversions.
 - `figure/` — plotted outputs and CSV summaries of extreme events (excluded).
 - Notebooks and helper scripts (step1/step3/step4, aws_map, minimum domain tools).
-
-Git & large files
-
-- This repository intentionally ignores large data outputs. See the
-  top-level `.gitignore` which contains entries such as `*.nc`, station
-  and figure directories.
-- If you need to store large binary/dataset artifacts in the remote
-  repository, use Git LFS. For one-off uploads, keep large datasets
-  outside the git repository and provide download links in the README.
-
-Troubleshooting
-
-- Push very slow or stalled? Check `git status` and `git ls-files` to see
-  which large files are tracked. Use `git rm --cached <path>` to stop
-  tracking an accidentally added large file, commit, then push.
-- If large files are already present in history and you need to remove
-  them permanently, use `git filter-repo` or BFG and then force-push.
-  This rewrites history and needs coordination with collaborators.
 
 Contact / Authors
 

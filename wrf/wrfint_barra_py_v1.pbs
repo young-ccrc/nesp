@@ -1,0 +1,28 @@
+
+#!/bin/bash
+#PBS -m ae
+#PBS -P n81
+#PBS -q normal
+#PBS -l walltime=00:10:00
+#PBS -l mem=8GB
+#PBS -l ncpus=1
+#PBS -j oe
+#PBS -l wd
+#PBS -l storage=scratch/w28+gdata/w28+gdata/n81+gdata/xp65
+echo "Starting time:"
+date
+
+module use /g/data/xp65/public/modules
+module load conda/analysis3
+
+# Set environment variables
+export BARRA2_ROOT="/g/data/w28/chs548/BARRA2_For_WRF"
+
+python barra_to_int.py \
+  --root $BARRA2_ROOT \
+  --vars TT,UU,VV,SPECHUMD,GHT,PMSL,PSFC \
+  --outdir /g/data/w28/yk8692/nesp/wrf \
+  --prefix BARRA2 \
+  --alias-hh \
+  --verbose \
+  2016-01-28_00 2016-02-01_00 6

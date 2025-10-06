@@ -1,5 +1,4 @@
-*.pbs*
-*.txt
+*.pbs.o*
 __pycache__/
 *.py[cod]
 *.so
