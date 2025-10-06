@@ -121,6 +121,7 @@ Repository layout (high level)
 - Notebooks and helper scripts (step1/step3/step4, aws_map, minimum domain tools).
 
 Contact / Authors
+Youngil Kim, youngil@unsw.edu.au
 
 For questions about these scripts or running the workflows, open an
 issue or contact the repository owner.
