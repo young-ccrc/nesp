@@ -13,11 +13,24 @@ Requirements:
   - netCDF4, numpy
   - WPSUtils.py and fortran_io.py (from NCAR helpers) on PYTHONPATH
 
+Notes:
+  - 6h cycles only; valid times must be within 0..5.5h of cycle base
+  - Single-level vars are written as surface proxies at XLVL=200100
+  - 2m/10m vars can optionally be written as surface proxies too
+  - Missing values are set to -1.0e30
+  
 Example:
-  python barra_to_int.py --root /g/data/w28/chs548/BARRA2_For_WRF \
-    --vars TT,UU,VV,SPECHUMD,GHT,PMSL,PSFC \
-    2016-01-28_00 2016-01-28_12 6
+    python barra_to_int.py \
+        --root /g/data/w28/yk8692/nesp/wrf \
+        --layout dated \
+        --vars TT,UU,VV,SPECHUMD,GHT,PMSL,PSFC \
+        --outdir /g/data/w28/yk8692/nesp_backup/wrf/wps/int \
+        --prefix BARRA2 \
+        --step-minutes 30 \
+        --verbose \
+        2016-01-28_00:00 2016-02-01_00:00
 """
+
 from __future__ import annotations
 import argparse, os, sys, glob
 from dataclasses import dataclass
@@ -351,6 +364,68 @@ SL_HELPERS = {
     },
 }
 
+SOIL_TEMP = {
+    0: dict(
+        wps="ST000007",
+        desc="Soil temp layer 1",
+        units="K",
+        patterns=("WRFSURF/soil_temp-barra_r2-hres-*.nc",),
+        candidates=("soil_temp",),
+    ),
+    1: dict(
+        wps="ST007028",
+        desc="Soil temp layer 2",
+        units="K",
+        patterns=("WRFSURF/soil_temp-barra_r2-hres-*.nc",),
+        candidates=("soil_temp",),
+    ),
+    2: dict(
+        wps="ST028100",
+        desc="Soil temp layer 3",
+        units="K",
+        patterns=("WRFSURF/soil_temp-barra_r2-hres-*.nc",),
+        candidates=("soil_temp",),
+    ),
+    3: dict(
+        wps="ST100289",
+        desc="Soil temp layer 4",
+        units="K",
+        patterns=("WRFSURF/soil_temp-barra_r2-hres-*.nc",),
+        candidates=("soil_temp",),
+    ),
+}
+
+SOIL_MOIS = {
+    0: dict(
+        wps="SM000007",
+        desc="Soil moisture layer 1",
+        units="m3 m-3",
+        patterns=("WRFSURF/soil_mois-barra_r2-hres-*.nc",),
+        candidates=("soil_mois",),
+    ),
+    1: dict(
+        wps="SM007028",
+        desc="Soil moisture layer 2",
+        units="m3 m-3",
+        patterns=("WRFSURF/soil_mois-barra_r2-hres-*.nc",),
+        candidates=("soil_mois",),
+    ),
+    2: dict(
+        wps="SM028100",
+        desc="Soil moisture layer 3",
+        units="m3 m-3",
+        patterns=("WRFSURF/soil_mois-barra_r2-hres-*.nc",),
+        candidates=("soil_mois",),
+    ),
+    3: dict(
+        wps="SM100289",
+        desc="Soil moisture layer 4",
+        units="m3 m-3",
+        patterns=("WRFSURF/soil_mois-barra_r2-hres-*.nc",),
+        candidates=("soil_mois",),
+    ),
+}
+
 # --------------------------- Path resolution ---------------------------
 
 
@@ -440,7 +515,10 @@ def read_var_2d_by_candidates(
     for name in candidates:
         if name in nc.variables and nc.variables[name].ndim >= 2:
             arr = nc.variables[name][tidx, ...]
-            return np.array(arr, dtype=np.float32), name
+            arr = np.array(arr, dtype=np.float32)
+            arr = arr[::-1, :]  # CLM
+            return arr, name  # CLM
+    # CLM 28 JAN 2026        return np.array(arr, dtype=np.float32), name
     raise KeyError("None of candidate names found: " + ",".join(candidates))
 
 
@@ -455,8 +533,11 @@ def read_var_3d_by_candidates(
                 if levname in nc.dimensions or levname in nc.variables:
                     lev = nc.variables[levname][:]
                     if var.ndim == 3 and len(lev) == var.shape[0]:
+                        var = np.array(var, dtype=np.float32)  # CLM
+                        var = var[:, ::-1, :]  # CLM
                         return (
-                            np.array(var, dtype=np.float32),
+                            # CLM 28 JAN 2026 np.array(var, dtype=np.float32),
+                            var,  # CLM
                             np.array(lev, dtype=np.float32),
                             levname,
                             name,
@@ -520,6 +601,7 @@ def convert_time(
     verbose=False,
     outdir=".",
     alias_hh=False,
+    alias_mm=True,
     emit_2m10m: bool = False,
 ):
 
@@ -613,7 +695,7 @@ def convert_time(
                             f"[OK] {key}: file={os.path.basename(path)} var={used} lev={levname} nlev={arr3d.shape[0]}"
                         )
 
-        # ---------- NEW: surface proxy slabs at XLVL=200100 ----------
+        # ---------- Surface proxy slabs at XLVL=200100 ----------
         # Skip proxies that the user already wrote via --vars:
         # (TT2 writes TT@200100, U10->UU@200100, V10->VV@200100, Q2->SPECHUMD@200100, SKINTEMP unchanged)
         skip_if_present = {
@@ -695,6 +777,100 @@ def convert_time(
                         f"[OK] {p}-> {cfg['wps']}@200100: file={os.path.basename(path)} var={used}"
                     )
 
+        # ---------- Write 4-layer soil temperature & moisture ----------
+        # Soil temperature
+        soil_t_path = find_file_multi(
+            root,
+            SOIL_TEMP[0]["patterns"],
+            layout,
+            T0.year,
+            T0.month,
+            T0.day,
+            T0.hour,
+            valid_dt.minute,
+        )
+        if soil_t_path:
+            with Dataset(soil_t_path) as nc:
+                tidx = find_time_index(nc, valid_dt, T0)
+                if tidx >= 0:
+                    proj = build_latlon_proj_from_file(nc)
+                    data = nc.variables[SOIL_TEMP[0]["candidates"][0]][
+                        tidx, ...
+                    ]  # (depth, y, x)
+                    for k in range(min(4, data.shape[0])):
+                        slab = np.array(data[k, :, :], dtype=np.float32)[::-1, :]  # CLM
+                        slab[slab < 0] = 285  # CLM Constant temperature 285K
+                        # CLM  28 01 2026 slab = np.array(data[k, :, :], dtype=np.float32)
+                        meta = SOIL_TEMP[k]
+                        write_slab(
+                            out,
+                            slab,
+                            200100.0,
+                            proj,
+                            meta["wps"],
+                            hdate_full,
+                            meta["units"],
+                            "BARRA reanalysis grid",
+                            meta["desc"],
+                        )
+                        if verbose:
+                            print(
+                                f"[OK] SOIL TEMP {meta['wps']} from {os.path.basename(soil_t_path)} depth index {k}"
+                            )
+
+        # Soil moisture
+        soil_m_path = find_file_multi(
+            root,
+            SOIL_MOIS[0]["patterns"],
+            layout,
+            T0.year,
+            T0.month,
+            T0.day,
+            T0.hour,
+            valid_dt.minute,
+        )
+        if soil_m_path:
+            with Dataset(soil_m_path) as nc:
+                tidx = find_time_index(nc, valid_dt, T0)
+                if tidx >= 0:
+                    proj = build_latlon_proj_from_file(nc)
+                    data = nc.variables[SOIL_MOIS[0]["candidates"][0]][
+                        tidx, ...
+                    ]  # (depth, y, x)
+                    for k in range(min(4, data.shape[0])):
+                        slabM = np.array(data[k, :, :], dtype=np.float32)[
+                            ::-1, :
+                        ]  # CLM
+                        slabM[slabM < 0] = 1  # CLM  Mask over the ocean
+                        # CLM 28 01 2026 slab = np.array(data[k, :, :], dtype=np.float32)
+                        # CLM The soil_mois, in units kg m-2, can be converted to volumetric units m3/m3 using
+                        # CLM soil_mois (m3/m3) = soil_mois (kg m-2) / (1000 * thickness_in_metre)
+                        # CLM The 4 soil layers of thickness are: 0.1, 0.25, 0.65, 2.0m
+                        if k == 0:  # CLM
+                            slab = slabM / (1000 * 0.1)  # CLM
+                        if k == 1:  # CLM
+                            slab = slabM / (1000 * 0.25)  # CLM
+                        if k == 2:  # CLM
+                            slab = slabM / (1000 * 0.65)  # CLM
+                        if k == 3:  # CLM
+                            slab = slabM / (1000 * 2.0)  # CLM
+                        meta = SOIL_MOIS[k]
+                        write_slab(
+                            out,
+                            slab,
+                            200100.0,
+                            proj,
+                            meta["wps"],
+                            hdate_full,
+                            meta["units"],
+                            "BARRA reanalysis grid",
+                            meta["desc"],
+                        )
+                        if verbose:
+                            print(
+                                f"[OK] SOIL MOIS {meta['wps']} from {os.path.basename(soil_m_path)} depth index {k}"
+                            )
+
         out.close()
 
         # Optional alias: for half-hourly, metgrid can use the full timestamp, so keep aliasing off.
@@ -707,6 +883,35 @@ def convert_time(
                 except Exception:
                     shutil.copy2(src, dst)
 
+        # create minute-resolution alias (PREFIX:YYYY-MM-DD_HH:MM) if requested
+        if alias_mm:
+            src = f"{prefix}:{hdate_full}"
+            dst_mm = f"{prefix}:{valid_dt.strftime('%Y-%m-%d_%H:%M')}"
+            if not os.path.exists(dst_mm):
+                try:
+                    os.symlink(src, dst_mm)
+                except Exception:
+                    try:
+                        shutil.copy2(src, dst_mm)
+                    except Exception:
+                        if verbose:
+                            print(
+                                f"[WARN] Failed to make minute alias {dst_mm} -> {src}"
+                            )
+
+        # Optional alias: hour-only alias (PREFIX:YYYY-MM-DD_HH)
+        if alias_hh and valid_dt.minute == 0:
+            src = f"{prefix}:{hdate_full}"
+            dst = f"{prefix}:{valid_dt.strftime('%Y-%m-%d_%H')}"
+            if not os.path.exists(dst):
+                try:
+                    os.symlink(src, dst)
+                except Exception:
+                    try:
+                        shutil.copy2(src, dst)
+                    except Exception:
+                        if verbose:
+                            print(f"[WARN] Failed to make hour alias {dst} -> {src}")
     finally:
         os.chdir(cwd)
 
@@ -723,6 +928,11 @@ def main():
         "--alias-hh",
         action="store_true",
         help="Also create an hour-only alias (PREFIX:YYYY-MM-DD_HH) for metgrid",
+    )
+    ap.add_argument(
+        "--alias-mm",
+        action="store_true",
+        help="Also create a minute-resolution alias (PREFIX:YYYY-MM-DD_HH:MM) without seconds for metgrid",
     )
     ap.add_argument(
         "--layout",
@@ -786,6 +996,7 @@ def main():
             verbose=args.verbose,
             outdir=args.outdir,
             alias_hh=args.alias_hh,
+            alias_mm=args.alias_mm,
             emit_2m10m=args.emit_2m10m,
         )
 
